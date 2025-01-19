@@ -10,17 +10,12 @@
 using namespace std;
 using namespace std::chrono;
 
-extern "C" void gf_vect_dot_prod_avx2();
-extern "C" void gf_2vect_dot_prod_avx2();
-extern "C" void gf_3vect_dot_prod_avx2();
-extern "C" void gf_4vect_dot_prod_avx2();
-extern "C" void gf_5vect_dot_prod_avx2();
-extern "C" void gf_6vect_dot_prod_avx2();
+
 
 int main() {
     microseconds encoding_duration(0);
 
-    std::ifstream file("temp\\random_data.bin", std::ios::binary | std::ios::ate);
+    std::ifstream file("temp/random_data.bin", std::ios::binary | std::ios::ate);
     if (!file.is_open()) {
         std::cerr << "无法打开文件" << std::endl;
         return 1;
@@ -96,7 +91,7 @@ int main() {
 
 
     for (int i = 0; i < r; i++) {
-        std::ofstream outFile("temp\\Parity" + std::to_string(i) + ".bin", std::ios::binary);
+        std::ofstream outFile("temp/Parity" + std::to_string(i) + ".bin", std::ios::binary);
         if (!outFile.is_open()) {
             std::cerr << "无法打开输出文件 parity_block_" << i << ".bin" << std::endl;
             return 1;

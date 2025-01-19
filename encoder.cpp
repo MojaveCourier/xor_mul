@@ -1,5 +1,13 @@
 #include"encoder.h"
 
+extern "C" void gf_vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char*dests);
+extern "C" void gf_2vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
+extern "C" void gf_3vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
+extern "C" void gf_4vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
+extern "C" void gf_5vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
+extern "C" void gf_6vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
+
+
 void encode_rs1(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size)
 {
     /*unsigned char **rs_matrix;
@@ -101,7 +109,7 @@ void encode_rs3(int k, int r, unsigned char **data_ptrs, unsigned char **global_
     gf_gen_rs_matrix(encode_matrix, m, k);
     unsigned char *g_tbls = new unsigned char[k * r * 32];
     ec_init_tables(k, r, &encode_matrix[k * k], g_tbls);
-    ec_encode_data_avx2(block_size, k, p, g_tbls, data_ptrs, global_ptrs);
+    ec_encode_data_avx2(block_size, k, r, g_tbls, data_ptrs, global_ptrs);
 
 }
 
@@ -143,7 +151,7 @@ ec_encode_data_avx2(int len, int k, int rows, unsigned char *g_tbls, unsigned ch
 }
 
 void
-ec_init_tables_base(int k, int rows, unsigned char *a, unsigned char *g_tbls)
+ec_init_tables(int k, int rows, unsigned char *a, unsigned char *g_tbls)
 {
         int i, j;
 
