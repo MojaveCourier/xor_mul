@@ -302,11 +302,29 @@
 
     unsigned char gf_inv(unsigned char a);
 
-    void gf_gen_cauchy_matrix(unsigned char **a, int m, int k);
+    //void gf_gen_cauchy_matrix(unsigned char **a, int m, int k);
 
-    void gf_gen_rs_matrix(unsigned char **a, int m, int k);
+    //void gf_gen_rs_matrix(unsigned char **a, int m, int k);
 
 
     void encode_rs1(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
 
     void encode_rs2(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
+
+    void encode_rs3(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
+
+    void
+    ec_encode_data_avx2(int len, int k, int rows, unsigned char *g_tbls, unsigned char **data,
+                        unsigned char **coding);
+
+    void
+    ec_init_tables(int k, int rows, unsigned char *a, unsigned char *g_tbls);
+
+    void
+    gf_vect_mul_init(unsigned char c, unsigned char *tbl);
+
+    void
+    gf_gen_rs_matrix(unsigned char *a, int m, int k);
+
+    unsigned char
+    gf_mul(unsigned char a, unsigned char b);

@@ -10,6 +10,13 @@
 using namespace std;
 using namespace std::chrono;
 
+extern "C" void gf_vect_dot_prod_avx2();
+extern "C" void gf_2vect_dot_prod_avx2();
+extern "C" void gf_3vect_dot_prod_avx2();
+extern "C" void gf_4vect_dot_prod_avx2();
+extern "C" void gf_5vect_dot_prod_avx2();
+extern "C" void gf_6vect_dot_prod_avx2();
+
 int main() {
     microseconds encoding_duration(0);
 
@@ -76,7 +83,7 @@ int main() {
         high_resolution_clock::time_point start = high_resolution_clock::now();
 
 
-        encode_rs2(k, r, blocks, parity_block, blockSize);
+        encode_rs3(k, r, blocks, parity_block, blockSize);
 
         high_resolution_clock::time_point end = high_resolution_clock::now();
         encoding_duration = duration_cast<microseconds>(end - start);
