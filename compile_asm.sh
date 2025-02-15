@@ -4,3 +4,4 @@ nasm -f elf64 gf_3vect_dot_prod_avx2.asm -o gf_3vect_dot_prod_avx2.o
 nasm -f elf64 gf_4vect_dot_prod_avx2.asm -o gf_4vect_dot_prod_avx2.o
 nasm -f elf64 gf_5vect_dot_prod_avx2.asm -o gf_5vect_dot_prod_avx2.o
 nasm -f elf64 gf_6vect_dot_prod_avx2.asm -o gf_6vect_dot_prod_avx2.o
+nasm -f elf64 xor_gen_avx.asm -o xor_gen_avx.o

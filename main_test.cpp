@@ -11,7 +11,7 @@ using namespace std;
 using namespace std::chrono;
 
 
-
+#pragma pack(16)
 int main() {
     microseconds encoding_duration(0);
 
@@ -37,7 +37,7 @@ int main() {
 
     unsigned char **parity_block = new unsigned char*[r];
     for(int i = 0; i < r; i++){
-        parity_block[i] = new unsigned char[blockSize];
+        parity_block[i] = static_cast<unsigned char*>(std::aligned_alloc(32, blockSize));
         std::memset(parity_block[i], 0, blockSize);
     }
 
@@ -49,7 +49,7 @@ int main() {
 
     for(int i = 0; i < numBlocks; i++){
         std::cout << "读取文件块 " << i << std::endl;
-        blocks[i] = new unsigned char[blockSize];
+        blocks[i] = static_cast<unsigned char*>(std::aligned_alloc(32, blockSize));
         if (!file.read(reinterpret_cast<char*>(blocks[i]), blockSize)) {
             std::cerr << "读取文件块失败" << std::endl;
             return 1;

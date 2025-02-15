@@ -5,4 +5,5 @@ g++ main_test.o encoder.o \
     gf_4vect_dot_prod_avx2.o \
     gf_5vect_dot_prod_avx2.o \
     gf_6vect_dot_prod_avx2.o \
+    xor_gen_avx.o \
     -o my_program
