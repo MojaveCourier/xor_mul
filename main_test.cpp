@@ -57,13 +57,24 @@ int main() {
     }
 
 
+    unsigned char ** block_ptr(new unsigned char*[k + r]);
+    for(int i = 0; i < k; i++)
+    {
+        block_ptr[i] = blocks[i];
+    }
+    for(int i = 0; i < r; i++)
+    {
+        block_ptr[k + i] = parity_block[i];
+    }
+
+
     std::cout << "开始编码" << std::endl;
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 5; i++){
         cout << "开始第" << i + 1 << "次编码" << endl;
         high_resolution_clock::time_point start = high_resolution_clock::now();
 
 
-        encode_rs1(k, r, blocks, parity_block, blockSize);
+        encode_rs1(k, r, block_ptr, blockSize);
 
         high_resolution_clock::time_point end = high_resolution_clock::now();
         encoding_duration = duration_cast<microseconds>(end - start);
@@ -73,7 +84,7 @@ int main() {
     }
 
     std::cout << "开始编码" << std::endl;
-    for(int i = 0; i < 20; i++){
+    for(int i = 0; i < 5; i++){
         cout << "开始第" << i + 1 << "次编码" << endl;
         high_resolution_clock::time_point start = high_resolution_clock::now();
 

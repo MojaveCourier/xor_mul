@@ -307,7 +307,7 @@
     //void gf_gen_rs_matrix(unsigned char **a, int m, int k);
 
 
-    void encode_rs1(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
+    void encode_rs1(int k, int r, unsigned char **block_ptr, int block_size);
 
     void encode_rs2(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
 

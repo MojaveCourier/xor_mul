@@ -9,7 +9,7 @@ extern "C" void gf_6vect_dot_prod_avx2(int len, int vec, unsigned char *g_tbls, 
 extern "C" int xor_gen_avx(int vects, int len, void **array);
 
 
-void encode_rs1(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size)
+void encode_rs1(int k, int r, unsigned char** block_ptr, int block_size)
 {
     /*for (int i = 0; i < k; i++)
     {
@@ -22,17 +22,7 @@ void encode_rs1(int k, int r, unsigned char **data_ptrs, unsigned char **global_
             }
         }
     }*/
-    std::vector<unsigned char*> block_ptrs;
-    for (int i = 0; i < k; i++)
-    {
-        block_ptrs.push_back(data_ptrs[i]);
-    }
-    for(int i = 0; i < r; i++)
-    {
-        block_ptrs.push_back(global_ptrs[i]);
-    }
-    xor_gen_avx(k + r, block_size, (void **)block_ptrs.data());
-
+    xor_gen_avx(k + r, block_size, (void **)block_ptr);
 }
 
 
