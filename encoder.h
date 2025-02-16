@@ -314,7 +314,7 @@
     void encode_rs3(int k, int r, unsigned char **data_ptrs, unsigned char **global_ptrs, int block_size);
 
     void
-    ec_encode_data_avx2(int len, int k, int rows, unsigned char *g_tbls, unsigned char **data,
+    ec_encode_data_avx(int len, int k, int rows, unsigned char *g_tbls, unsigned char **data,
                         unsigned char **coding);
 
     void

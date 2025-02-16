@@ -69,8 +69,8 @@ int main() {
 
 
     std::cout << "开始编码" << std::endl;
-    for(int i = 0; i < 5; i++){
-        cout << "开始第" << i + 1 << "次编码" << endl;
+    for(int i = 0; i < 100; i++){
+        //cout <<  i + 1 <<  endl;
         high_resolution_clock::time_point start = high_resolution_clock::now();
 
 
@@ -78,14 +78,14 @@ int main() {
 
         high_resolution_clock::time_point end = high_resolution_clock::now();
         encoding_duration = duration_cast<microseconds>(end - start);
-        cout << "编码时间: " << encoding_duration.count() << " 微秒" << endl;
+        cout  << encoding_duration.count()  << endl;
 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        //std::this_thread::sleep_for(std::chrono::seconds(1));
     }
 
     std::cout << "开始编码" << std::endl;
-    for(int i = 0; i < 5; i++){
-        cout << "开始第" << i + 1 << "次编码" << endl;
+    for(int i = 0; i < 100; i++){
+        //cout  << i + 1 << endl;
         high_resolution_clock::time_point start = high_resolution_clock::now();
 
 
@@ -93,9 +93,9 @@ int main() {
 
         high_resolution_clock::time_point end = high_resolution_clock::now();
         encoding_duration = duration_cast<microseconds>(end - start);
-        cout << "编码时间: " << encoding_duration.count() << " 微秒" << endl;
+        cout <<  encoding_duration.count() <<  endl;
 
-        std::this_thread::sleep_for(std::chrono::seconds(1));
+        //std::this_thread::sleep_for(std::chrono::seconds(1));
     }
     
 
