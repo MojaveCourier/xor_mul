@@ -6,7 +6,7 @@ extern "C" void gf_3vect_dot_prod_avx(int len, int vec, unsigned char *g_tbls, u
 extern "C" void gf_4vect_dot_prod_avx(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
 extern "C" void gf_5vect_dot_prod_avx(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
 extern "C" void gf_6vect_dot_prod_avx(int len, int vec, unsigned char *g_tbls, unsigned char **buffs, unsigned char**dests);
-extern "C" int xor_gen_avx(int vects, int len, void **array);
+extern "C" int xor_gen_avx512(int vects, int len, void **array);
 
 
 void encode_rs1(int k, int r, unsigned char** block_ptr, int block_size)
@@ -22,7 +22,7 @@ void encode_rs1(int k, int r, unsigned char** block_ptr, int block_size)
             }
         }
     }*/
-    xor_gen_avx(k + r, block_size, (void **)block_ptr);
+    xor_gen_avx512(k + r, block_size, (void **)block_ptr);
 }
 
 
