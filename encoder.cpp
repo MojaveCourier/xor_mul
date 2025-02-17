@@ -38,12 +38,30 @@ void encode_rs3(int k, int r, unsigned char **data_ptrs, unsigned char **global_
 }
 
 void
+ec_encode_data_base(int len, int srcs, int dests, unsigned char *v, unsigned char **src,
+                    unsigned char **dest)
+{
+        int i, j, l;
+        unsigned char s;
+
+        for (l = 0; l < dests; l++) {
+                for (i = 0; i < len; i++) {
+                        s = 0;
+                        for (j = 0; j < srcs; j++)
+                                s ^= gf_mul(src[j][i], v[j * 32 + l * srcs * 32 + 1]);
+
+                        dest[l][i] = s;
+                }
+        }
+}
+
+void
 ec_encode_data_avx(int len, int k, int rows, unsigned char *g_tbls, unsigned char **data,
                     unsigned char **coding)
 {
 
         if (len < 32) {
-                ec_encode_data_avx(len, k, rows, g_tbls, data, coding);
+                ec_encode_data_base(len, k, rows, g_tbls, data, coding);
                 return;
         }
 

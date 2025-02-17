@@ -318,6 +318,10 @@
                         unsigned char **coding);
 
     void
+    ec_encode_data_base(int len, int srcs, int dests, unsigned char *v, unsigned char **src,
+                        unsigned char **dest);    
+
+    void
     ec_init_tables(int k, int rows, unsigned char *a, unsigned char *g_tbls);
 
     void
